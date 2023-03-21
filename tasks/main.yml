@@ -3,6 +3,10 @@
 ### Create Groups
 #####################################
 
+- name: Output
+  debug:
+    msg: "{{ item.name }} and {{ item.scope }} and {{ item.path }}"
+
 - name: Ensure group is present
   community.windows.win_domain_group:
     name: "{{ item.name }}"

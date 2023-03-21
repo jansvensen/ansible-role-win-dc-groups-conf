@@ -5,6 +5,7 @@
 
 - name: Ensure group is present
   community.windows.win_domain_group:
-    name: g_g_sec_citrix_users
-    scope: global
-    path: OU=Security,OU=Groups,OU=Objects,DC=dt,DC=democloud
+    name: "{{ item.name }}"
+    scope: "{{ item.scope }}"
+    path: "{{ item.path }}"
+  with_items: "{{ groups }}"

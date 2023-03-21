@@ -3,14 +3,11 @@
 ### Create Groups
 #####################################
 
-- name: Output
-  debug:
-    msg: '{{ item.name }} and {{ item.scope }} and {{ item.path }}'
-  with_items: '{{ groups }}'
-
-- name: Ensure group is present
+- name: Ensure OU is present & protected    
   community.windows.win_domain_group:
-    name: '{{ item.name }}'
-    scope: '{{ item.scope }}'
-    path: '{{ item.path }}'
-  with_items: '{{ groups }}'
+    name: "{{ item.name }}"
+    scope: "{{ item.scope }}"
+    path: "{{ item.path }}"
+    state: present
+    protected: true
+  with_items: "{{ groups }}"

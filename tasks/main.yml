@@ -6,12 +6,12 @@
 - name: test-one
   debug: 
     msg: Name is {{ groups.name }}
-  with_item: '{{ groups }}'
+  with_items: '{{ groups }}'
 
 - name: test-one-point-one
   debug: 
     msg: '{{ groups.name }}'
-  with_item: '{{ groups }}'
+  with_items: '{{ groups }}'
 
 #- name: Ensure OU is present & protected    
 #  community.windows.win_domain_group:

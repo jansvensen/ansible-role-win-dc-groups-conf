@@ -3,11 +3,19 @@
 ### Create Groups
 #####################################
 
-- name: Ensure OU is present & protected    
-  community.windows.win_domain_group:
-    name: "{{ item.name }}"
-    scope: "{{ item.scope }}"
-    path: "{{ item.path }}"
-    state: present
-    protected: true
-  with_items: "{{ groups }}"
+- name: test-one
+  debug: 
+    msg: Name is {{ groups.name }}
+
+- name: test-one-point.one
+  debug: 
+    msg: '{{ groups.name }}'
+
+#- name: Ensure OU is present & protected    
+#  community.windows.win_domain_group:
+#    name: "{{ item.name }}"
+#    scope: "{{ item.scope }}"
+#    path: "{{ item.path }}"
+#    state: present
+#    protected: true
+#  with_items: "{{ groups }}"

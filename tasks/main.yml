@@ -6,7 +6,8 @@
 - name: Output
   debug:
     msg: "{{ item.name }} and {{ item.scope }} and {{ item.path }}"
-
+  with_items: "{{ groups }}"
+  
 - name: Ensure group is present
   community.windows.win_domain_group:
     name: "{{ item.name }}"

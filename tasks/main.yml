@@ -5,13 +5,13 @@
 
 - name: test-one
   debug: 
-    msg: Name is {{ groups.name }}
-  with_items: '{{ groups }}'
+    msg: 'Name is {{ groups.name }}'
+  with_items: '{{ dc_groups }}'
 
 - name: test-one-point-one
   debug: 
     msg: '{{ groups.name }}'
-  with_items: '{{ groups }}'
+  with_items: '{{ dc_groups }}'
 
 #- name: Ensure OU is present & protected    
 #  community.windows.win_domain_group:

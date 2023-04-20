@@ -13,11 +13,11 @@
     msg: '{{ item.name }}'
   with_items: '{{ dc_groups }}'
 
-#- name: Ensure OU is present & protected    
-#  community.windows.win_domain_group:
-#    name: "{{ item.name }}"
-#    scope: "{{ item.scope }}"
-#    path: "{{ item.path }}"
-#    state: present
-#    protected: true
-#  with_items: "{{ groups }}"
+- name: Ensure OU is present & protected    
+  community.windows.win_domain_group:
+    name: '{{ item.name }}'
+    scope: '{{ item.scope }}'
+    path: '{{ item.path }}'
+    state: present
+    protected: true
+  with_items: '{{ dc_groups }}'

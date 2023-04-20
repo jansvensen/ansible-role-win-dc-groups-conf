@@ -5,12 +5,12 @@
 
 - name: test-one
   debug: 
-    msg: 'Name is {{ groups.name }}'
+    msg: 'Name is {{ item.name }}'
   with_items: '{{ dc_groups }}'
 
 - name: test-one-point-one
   debug: 
-    msg: '{{ groups.name }}'
+    msg: '{{ item.name }}'
   with_items: '{{ dc_groups }}'
 
 #- name: Ensure OU is present & protected    

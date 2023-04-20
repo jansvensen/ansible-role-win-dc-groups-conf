@@ -13,7 +13,7 @@
     msg: '{{ item.name }}'
   with_items: '{{ dc_groups }}'
 
-- name: Ensure OU is present & protected    
+- name: Add groups to AD
   community.windows.win_domain_group:
     name: '{{ item.name }}'
     scope: '{{ item.scope }}'

@@ -3,16 +3,6 @@
 ### Create Groups
 #####################################
 
-- name: test-one
-  debug: 
-    msg: 'Name is {{ item.name }}'
-  with_items: '{{ dc_groups }}'
-
-- name: test-one-point-one
-  debug: 
-    msg: '{{ item.name }}'
-  with_items: '{{ dc_groups }}'
-
 - name: Add groups to AD
   community.windows.win_domain_group:
     name: '{{ item.name }}'

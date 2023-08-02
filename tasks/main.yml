@@ -4,10 +4,10 @@
 #####################################
 
 - name: Add groups to AD
-  community.windows.win_domain_group:
+  microsoft.ad.group:
     name: '{{ item.name }}'
     scope: '{{ item.scope }}'
     path: '{{ item.path }}'
     state: present
-    protected: true
+    protect_from_deletion: true
   with_items: '{{ dc_groups }}'

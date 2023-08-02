@@ -9,5 +9,4 @@
     scope: '{{ item.scope }}'
     path: '{{ item.path }}'
     state: present
-    protect_from_deletion: true
   with_items: '{{ dc_groups }}'

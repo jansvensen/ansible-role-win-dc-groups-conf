@@ -10,3 +10,17 @@
     path: '{{ item.path }}'
     state: present
   with_items: '{{ dc_groups }}'
+
+#####################################
+### Create dynamic Groups
+#####################################
+
+- name: Add groups to AD dynamically
+  microsoft.ad.group:
+    name: "{{ item.0.name | replace('##', item.1) }}"
+    scope: "{{ item.0.scope }}"
+    path: "{{ item.0.path | replace('##', item.1) }}"
+    state: present
+  with_nested:
+  - "{{ dc_groups_dynamic }}"
+  - "{{ range(1, dc_domain_count + 1, 1) | list }}"

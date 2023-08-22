@@ -10,7 +10,7 @@
     path: '{{ item.path }}'
     state: present
   with_items: '{{ dc_groups }}'
-  when:  dc_groups != None"
+  when:  dc_groups != None
 
 #####################################
 ### Create dynamic Groups

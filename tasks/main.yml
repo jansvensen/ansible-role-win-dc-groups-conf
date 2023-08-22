@@ -9,7 +9,7 @@
     path: '{{ item.path }}'
     state: present
   with_items: '{{ dc_groups }}'
-  when:  '{{ dc_groups }} != None'
+  when:  dc_groups is defined
 
 #####################################
 ### Create dynamic Groups
@@ -24,4 +24,4 @@
   with_nested:
   - "{{ dc_groups_dynamic }}"
   - "{{ range(1, dc_domain_count + 1, 1) | list }}"
-  when: dc_groups_dynamic != None
+  when: dc_groups_dynamic is defined

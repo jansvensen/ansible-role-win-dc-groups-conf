@@ -3,6 +3,9 @@
 ### Create Groups
 #####################################
 
+- debug:
+  msg: '{{ dc_groups }}'
+
 - name: Add groups to AD
   microsoft.ad.group:
     name: '{{ item.name }}'

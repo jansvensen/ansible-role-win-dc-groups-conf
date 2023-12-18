@@ -6,6 +6,7 @@
 - name: Add members to the group, preserving existing membership
   microsoft.ad.group:
     name: '{{ item.0.group }}'
+    path: '{{ item.0.path }}'
     members:
       add:
         - '{{ item.1 }}'

@@ -1,21 +1,18 @@
 ---
 #####################################
-### Create Group and add users statically
+### Create Groups
 #####################################
-
-- name: Add members to the group, preserving existing membership
+- name: Add groups to AD
   microsoft.ad.group:
-    name: '{{ item.0.group }}'
-    path: '{{ item.0.path }}'
-    members:
-      add:
-        - '{{ item.1 }}'
-    scope: global
-  loop: "{{ dc_groups_static | subelements('users') }}"
-  when: dc_groups_static is defined
+    name: '{{ item.name }}'
+    scope: '{{ item.scope }}'
+    path: '{{ item.path }}'
+    state: present
+  with_items: '{{ dc_groups }}'
+  when:  dc_groups is defined
 
 #####################################
-### Create Group and add users dynamically
+### Create dynamic Groups
 #####################################
 
 - name: Add groups to AD dynamically

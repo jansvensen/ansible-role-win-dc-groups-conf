@@ -7,9 +7,12 @@
     name: '{{ item.name }}'
     scope: '{{ item.scope }}'
     path: '{{ item.path }}'
+    members:
+      add: '{{ item.users }}'
     state: present
-  with_items: '{{ dc_groups }}'
-  when:  dc_groups is defined
+  with_items: '{{ dc_groups_static }}'
+  when:  dc_groups_static is defined
+
 
 #####################################
 ### Create dynamic Groups
